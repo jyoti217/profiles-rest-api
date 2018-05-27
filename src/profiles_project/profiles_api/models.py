@@ -24,14 +24,14 @@ class UserProfileManager(BaseUserManager):
         """Creates a new superuser profile object"""
 
         user = self.create_user(email, name, password)
-        user.is_staff = true
-        user.is_superuser = true
+        user.is_staff = True
+        user.is_superuser = True
         user.save(using=self._db)
 
         return user
 
 class UserProfile(AbstractBaseUser, PermissionsMixin):
-    """This class represents a "user profile" inside our system. """
+    """This class represents a user profile inside our system. """
 
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
